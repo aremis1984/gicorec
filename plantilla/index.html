@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>{titulo}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.3.custom.min.css">
+        <link rel="stylesheet" type="text/css" href="css/principal.css"> 
+        <link rel="stylesheet" type="text/css" href="css/comun.css"> 
+        <link rel="stylesheet" type="text/css" href="css/pacientes.css">
+        <link rel="stylesheet" type="text/css" href="css/flex.css">
+
+        <script src='js/jquery-1.9.1.js'></script>
+        <script src='js/jquery-ui-1.10.3.custom.js'></script>
+        <script src='js/jquery.ui.datepicker-es.js'></script>
+        <script src="js/jquery.pageTablesLib.js"></script>
+
+        <script src='js/general.js'></script>
+        <script src='js/agenda.js'></script>
+
+    </head>
+    <body>
+        <div id=banner>
+            <a href="/gicorec/index.php" class="bannerlink"><img src="/gicorec/media/banner.jpg"></a>
+        </div>
+
+        <div class=content_wrapper>
+            {contenido}
+
+            <div class="{menu_inferior_class}">
+                <!-- START BLOCK : menu_principal_link -->
+                <div id=back class="button inline_block"><a href='/gicorec/index.php?pagina=principal'>Menú principal</a></div>
+                <!-- END BLOCK : menu_principal_link -->
+                <!-- START BLOCK : log_out -->
+                <div id=logout class="button inline_block"><a href='/gicorec/index.php?pagina=login&action=logout'>Cerrar sesión</a></div>
+                <!-- END BLOCK : log_out -->
+            </div>
+        </div>
+
+
+    </body>
+</html>

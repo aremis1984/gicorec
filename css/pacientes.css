@@ -1,0 +1,20 @@
+#content_ficha{
+    margin-top: 10px;
+    padding: 15px;
+}
+
+#content_ficha ul.inline_block li{
+    margin-bottom: 7px;
+}
+
+#ficha_der{
+    margin-bottom: 15px;
+    margin-left: 5%;
+    width: 40%;
+}
+#ficha_izq{
+    width: 40%;
+}
+#content_ficha > ul{
+    display: inline-block;
+}

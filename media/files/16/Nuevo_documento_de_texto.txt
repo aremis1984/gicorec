@@ -1,0 +1,43 @@
+{
+ "request": {
+  "airport": {
+   "requestedCode": "LPA",
+   "fsCode": "LPA"
+  },
+  "date": {
+   "year": "2013",
+   "month": "8",
+   "day": "1",
+   "interpreted": "2013-08-01"
+  },
+  "hourOfDay": {
+   "requested": "18",
+   "interpreted": 18
+  },
+  "numHours": {
+   "requested": "1",
+   "interpreted": 1
+  },
+  "utc": {
+   "requested": "false",
+   "interpreted": false
+  },
+  "codeType": {},
+  "maxFlights": {
+   "requested": "5",
+   "interpreted": 5
+  },
+  "extendedOptions": {},
+  "url": "https://api.flightstats.com/flex/flightstatus/rest/v2/json/airport/status/LPA/dep/2013/8/1/18"
+ },
+ "appendix": {
+  "airports": []
+ },
+ "error": {
+  "httpStatusCode": 403,
+  "errorCode": "AUTH_FAILURE",
+  "errorId": "289efe6d-eaf2-407b-b2d6-cb76368015b2",
+  "errorMessage": "Authorization failed. application is not active"
+ },
+ "flightStatuses": []
+}

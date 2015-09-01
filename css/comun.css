@@ -1,0 +1,285 @@
+body{
+    font-family: sans-serif;
+    background-color: #FDFFDB;
+}
+
+root { 
+    display: block;
+}
+
+h1,h2,h3,h4,h5,h6{
+    display: block;
+}
+h1{
+    font-size: 2.7em;
+    margin-bottom: 10px;
+}
+h2{
+    font-size: 2em;
+}
+h3{
+    font-size: 1.5em;
+}
+a{
+    text-decoration: none;
+}
+
+/* clases generales */
+.content_wrapper {
+    margin: 20px auto;
+    width: 1042px;
+}
+.main_menu_title {
+    color: #4682B4;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-shadow: 2px 3px 2px black;
+}
+
+.button{
+    background-color: white;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 7px 7px -4px gray;
+    color: steelblue;
+    font-family: sans-serif !important;
+    font-size: 20px;
+    line-height: 25px;
+    margin: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-shadow: 1px 1px 0 black;   
+    cursor: pointer;
+}    
+.button a{
+    color: inherit;
+}
+.block_center{
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aviso {
+    font-weight: bold;
+    padding: 10px;
+}
+
+.bannerlink img {
+    height: 240px;
+    width: 1042px;
+}
+.inline_block{
+    display: inline-block;
+}
+.left{float: left;}
+.witdh200 {width: 200px !important;}
+.clearall {clear: both;}
+.hidden { display: none;}
+.hiddenElmt { display: none;}
+
+.center{
+    text-align: center;
+}
+#banner{
+    margin-top: 5px;
+    text-align: center;
+}
+#banner_title{
+    display: none;
+}    
+
+#logout{
+    margin: 20px auto;
+    text-align: center;
+    width: 150px;
+
+}
+
+.producto input{
+    width: 15% !important; 
+    margin-left: 5px;
+}
+
+/* Formularios en general */
+form.std_form legend {
+    font-weight: bold;
+}
+form.std_form label {
+    display: inline-block;
+    width: 35%;
+}
+
+form.std_form input[type="text"],
+form.std_form input[type="password"],
+form.std_form textarea {
+    padding: 0.5em 0.1em;
+    width: 40%;
+}
+form.std_form select{
+    padding: 0.5em 0.1em;
+}
+form#login input[type="submit"] {
+    display: block;
+    margin: 10px auto;
+}
+form#login {
+    border: 3px outset lightblue;
+    background-color: #EAEFF1;
+    margin: 0 auto;
+    width: 300px;
+}
+
+form#login a {
+    margin-left: 59px;
+}
+form#buscar {
+    margin-bottom: 15px;
+}
+#buscar_info {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#buscar > input[type="text"] {
+    padding: 7px;
+    width: 254px;
+}
+
+#legend {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    padding: 1px;
+}
+
+form#almacen{
+    /*margin-right: 40%;*/
+    /*margin-top: 20px;*/
+}
+.campo_form {
+    margin: 5px;
+}
+
+form#almacen label {
+    display: inline-block;
+    width: 128px;
+}
+
+form#almacen_edit {
+    /*margin-right: 40%;*/
+    /*margin-top: 20px;*/
+}   
+form#pacientes {
+    /*    margin-top: 20px;*/
+    /*margin-right: 40%;*/
+}    
+form#pacientes_edit{
+    /*margin-right: 190px;*/
+    /*    margin-top: 20px;*/
+}    
+
+form#almacen_edit label {
+    display: inline-block;
+    width: 250px;
+
+}
+form#almacen_edit input {
+    display: inline-block;
+    /*width: 148px;*/
+}
+#form_agenda {
+    margin-bottom: 20px;
+    /*margin-right: 480px;*/
+    /*    margin-top: 20px;*/
+    /*    padding: 20px;*/
+}    
+
+.std_form{
+    background-color: #EAEFF1;
+    border: 3px outset lightblue;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.label{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+/* tablas en general */
+table tbody tr:nth-child(n) {
+    background: none repeat scroll 0 0 whitesmoke;
+}
+table tbody tr:nth-child(2n) {
+    background: none repeat scroll 0 0 #F5F5FF;
+}
+
+table td, table th {
+    padding: 2px 5px;
+    border: 1px solid black;
+    text-align: center;
+}
+table thead {
+    background: none repeat scroll 0 0 lightsteelblue;
+    font-weight: bold;
+}
+table{
+    margin-top: 20px;
+}
+
+table.stdtable{
+    width: 100%;
+}
+
+#datos_casos ul li.inline_block{
+    margin-right: 20px;
+}
+
+/*Para modificar el diseño del javascript*/
+
+.ui-widget-content a
+{
+    color:#333
+}
+.ui-widget-header
+{
+    border:1px solid lightsteelblue !important;
+    background:steelblue 50% 50% repeat-x !important;
+    color:#fff;
+    font-weight:bold
+}
+
+.ui-widget-header .ui-state-focus
+{
+    border:1px solid lightsteelblue !important;
+    background: 50% 50% repeat-x #F5F5FF !important;
+    font-weight:bold;
+    color:black !important;
+}
+.ui-widget-header .ui-state-active
+{
+    border:1px solid lightsteelblue !important;
+    background:#fff url(images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x;
+    font-weight:bold;
+    color: black !important;
+}
+.ui-state-highlight,.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight
+{
+    border:1px solid lightsteelblue !important;
+    background:steelblue 50% top repeat-x !important;
+    color:#363636
+}
+.ui-state-hover,.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,.ui-state-focus,
+.ui-widget-content .ui-state-focus,.ui-widget-header 
+.ui-state-focus
+{
+    border:1px solid lightsteelblue !important;
+    background: 50% 50% repeat-x #F5F5FF !important;
+    font-weight:bold;
+    color:black !important;
+}

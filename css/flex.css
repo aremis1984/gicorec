@@ -1,0 +1,16 @@
+
+
+@media (max-width: 1000px){
+    /* estilo css para un dispositivo de este ancho */ 
+
+    body {
+        overflow-x: hidden;
+    }
+    .bannerlink img {
+        width: 800px;
+    }
+    .content_wrapper{
+        width: 800px;
+
+    }
+}

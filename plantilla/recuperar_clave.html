@@ -1,0 +1,63 @@
+
+<div>
+    <!-- START BLOCK : errordni -->
+    <h2>El email no existe en nuestra base de datos, por favor verifique el e-mail.</h2>
+    <!-- END BLOCK : errordni -->
+
+    <!-- START BLOCK : errormail2 -->
+    <h2>El email no se pudo enviar correctamente, porfavor contacte con el administrador.</h2>
+    <!-- END BLOCK : errormail2 -->
+
+    <!-- START BLOCK : errormysql -->
+    <h2>Ha ocurrido un error, por favor contacte con el administrador del sitio.</h2>
+    <!-- END BLOCK : errormysql -->
+
+    <!-- START BLOCK : error0 -->
+    <h2>Se ha enviado un email con las instrucciones, por favor siga los pasos ahí indicados.</h2>
+    <!-- END BLOCK : error0 -->
+
+    <!-- START BLOCK : errortoken -->
+    <h2>Error, el token no es válido o ha caducado, por favor introduzca su email para generar uno nuevo</h2>
+    <!-- END BLOCK : errortoken -->
+
+    <!-- START BLOCK : generar_token -->
+    <form id=login class="userlogin std_form" method=POST action="/gicorec/index.php?gestion=recuperar_clave_token">
+        <fieldset>
+            <p>
+                <label for="login">Introducir DNI</label>
+                <input id="email" class="campo_form" name="dni" type="text">
+            </p>
+            <p>
+                <input type="submit" value="Recuperar contraseña" class="button">
+            </p>
+        </fieldset>
+    </form>
+    <!--    <p>
+            Para recuperar la contraseña se generará un código que se enviará al email indicado, por favor siga las instrucciones que recibirá en dicho e-mail.
+        </p>-->
+    <!-- END BLOCK : generar_token -->
+
+    <!-- START BLOCK : nueva_clave -->
+    <form id=login class="userlogin std_form validate" method=POST action="/gicorec/index.php?gestion=recuperar_clave_updatepass">
+        <fieldset>
+            <input type="hidden" name="token" value="{token}">
+
+            <p>
+                <label for="login">Usuario</label>
+                <input id="user" class="campo_form" type="text" name="user" value="{user}" readonly>
+            </p>
+            <p>
+                <label for="login">Nueva contraseña</label>
+                <input id="clave" class="campo_form claveRepetida" type="password" name="clave" required>
+            </p>
+            <p>
+                <label for="login">Repetir contraseña</label>
+                <input id="repetirclave" class="campo_form claveRepetida" type="password"  name="clave2" required>
+            </p>
+            <p>
+                <input type="submit" value="Nueva contraseña" class="button">
+            </p>
+        </fieldset>
+    </form>
+    <!-- END BLOCK : nueva_clave -->
+</div>

@@ -1,0 +1,211 @@
+<h1 class="main_menu_title">Propietarios</h1>
+
+<div id=menu-propietarios class=menu>
+
+    <div>
+
+        <form method="POST" id=buscar>
+            <input type="text" name="buscar" placeholder="Introducir cualquier detalle propietario">     
+            <input type="submit" value="Buscar" class="button">
+        </form> 
+        <!-- START BLOCK : reset_button -->
+        <a class="button inline_block" href='/gicorec/index.php?pagina=propietarios'>Atrás</a>
+        <!-- END BLOCK : reset_button -->
+
+        <!-- START BLOCK : add_prop_button -->
+        <div id="add_prop_button" class="button inline_block add_button3">
+            <span>Añadir</span>
+        </div>
+        <!-- END BLOCK : add_prop_button -->
+    </div>
+
+    <!-- START BLOCK : notificacion_ok --> 
+    <div class="mensaje_confirm" title="Acción realizada">
+        <span>{msg}</span>
+    </div>
+    <!-- END BLOCK : notificacion_ok -->
+
+    <!-- START BLOCK : buscar -->
+    <div>
+        <h3>Resultado de la búsqueda</h3>
+        <table class="tabla_propietarios stdtable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>DNI</th>
+                    <th>Teléfono</th>
+                    <th>E-mail</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead> 
+
+            <!-- START BLOCK : resultado -->
+            <tr>
+                <td>{nombre}</td>
+                <td>{dni}</td>
+                <td>{telefono}</td>
+                <td>{mail}</td>
+                <td>
+                    <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=propietarios&gestion=propietarios_del&id={id_prop}'>Eliminar</a>
+                    <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=propietarios&action=edit&id={id_prop}'>Editar</a>
+                    <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=propietarios&action=mascotas&id={id_prop}'>Mascotas</a>
+                </td>
+            </tr>  
+            <!-- END BLOCK : resultado -->
+        </table>
+    </div>
+</div>     
+
+<!-- END BLOCK : buscar -->
+
+<!-- START BLOCK : add -->
+<form id=propietarios class="std_form add_form3" style="display: none" action='/gicorec/index.php?gestion=propietarios_insert' method=POST>
+    <fieldset>
+        <legend id=legend>Registrar nuevo propietario</legend>
+
+        <div id=nombre class="campo_form">
+            <label for=nombre>Nombre:</label>
+            <input type=text name=nombre id=nombre />
+        </div>
+        <div id=dni class="campo_form">
+            <label for=dni>DNI:</label>
+            <input type=text name=dni id=dni />
+        </div>
+
+        <div id=telefono class="campo_form">
+            <label for=telefono>Teléfono:</label>
+            <input type=text name=telefono id=telefono />
+        </div>
+        <div id=mail class="campo_form">
+            <label for=mail>E-Mail</label>
+            <input type=text name=mail id=mail />
+        </div>
+
+        <br class="clearall"/>
+
+    </fieldset>
+    <input type=submit value=Guardar class="button" />         
+    <br class="clearall"/>
+</form>
+<!-- END BLOCK : add -->
+
+<!-- START BLOCK : lista -->
+<div>
+    <table class="tabla_propietarios stdtable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>DNI</th> 
+                <th>Teléfono</th>
+                <th>E-mail</th>
+
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <!-- START BLOCK : fila -->
+        <tr>
+            <td>{nombre}</td>
+            <td>{dni}</td>
+            <td>{telefono}</td>
+            <td>{mail}</td>
+
+            <td>
+                <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=propietarios&gestion=propietarios_del&id={id_prop}'>Eliminar</a>
+                <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=propietarios&action=edit&id={id_prop}'>Editar</a>
+                <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=propietarios&action=mascotas&id={id_prop}'>Mascotas</a>
+            </td> 
+        </tr>
+        <!-- END BLOCK : fila -->
+    </table>    
+</div>   
+
+
+<!-- END BLOCK : lista -->
+
+<!-- START BLOCK : edit -->
+<form id=propietarios_edit class="std_form add_form" action='/gicorec/index.php?gestion=propietarios_edit&id={id_prop}' method=POST>
+    <fieldset>
+        <legend id=legend>Editar propietario</legend>
+
+        <div id=nombre class="campo_form">
+            <label for=nombre>Nombre:</label>
+            <input type=text name=nombre id=nombre value='{nombre}' />
+        </div>
+        <div id=dni class="campo_form">
+            <label for=dni>DNI:</label>
+            <input type=text name=dni id=dni value='{dni}' />
+        </div>
+
+        <div id=telefono class="campo_form">
+            <label for=telefono>Teléfono:</label>
+            <input type=text name=telefono id=telefono value='{telefono}' />
+        </div>
+        <div id=mail class="campo_form">
+            <label for=mail>E-Mail</label>
+            <input type=text name=mail id=mail value='{mail}' />
+        </div>
+
+        <br class="clearall"/>
+
+    </fieldset>
+    <input type=submit value=Guardar class="button" />         
+    <br class="clearall"/>
+</form>
+<div id=back class="button inline_block"><a href='/gicorec/index.php?pagina=propietarios'>Atrás</a></div>
+
+<!-- END BLOCK : edit -->
+
+<!-- START BLOCK : mascotas -->
+<div id="content_mascotas"> 
+    <div id="datos">
+        <ul>
+            <li><span class="label">Nombre: </span>{nombre}</li>
+            <li><span class="label">DNI: </span>{dni}</li>
+        </ul>
+    </div>
+    <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=pacientes&dni={dni}'>Añadir mascota</a>
+    
+    
+    <div id="mascotas_propias" class="std_form center">
+        <!-- START BLOCK : mascotas_lista -->
+        <table class="tabla_propietarios stdtable">
+            <thead>
+                <tr>
+                    <th>Nº Historia</th>
+                    <th>Nombre</th>
+                    <th>Especie</th>
+                    <th>Raza</th>
+                    <th>Sexo</th>
+                    <th>Edad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead> 
+
+            <!-- START BLOCK : resultado_mascotas -->
+            <tr>
+                <td>{historia}</td>
+                <td>{nombre_pac}</td>
+                <td>{especie}</td>
+                <td>{raza}</td>
+                <td>{sexo}</td>
+                <td>{edad}</td>
+                <td>
+                    <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=propietarios&gestion=pacientes_del&id={id_pac}'>Eliminar</a>
+                </td>
+            </tr>  
+            <!-- END BLOCK : resultado_mascotas -->
+        </table>
+        <!-- END BLOCK : mascotas_lista -->
+        
+        <!-- START BLOCK : mascota_no -->
+        <h3>El usuario no tiene mascotas </h3>
+        <!-- END BLOCK : mascota_no -->
+    </div>
+    
+</div>
+
+<div id=back class="button inline_block"><a href='/gicorec/index.php?pagina=propietarios'>Atrás</a></div>
+
+<!-- END BLOCK : mascotas -->
+
+

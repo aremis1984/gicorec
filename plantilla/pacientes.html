@@ -1,0 +1,310 @@
+<h1 class="main_menu_title">Pacientes</h1>
+
+<div id=menu-pacientes class=menu>
+
+    <div>
+
+        <form method="POST" id=buscar>
+            <input type="text" name="buscar" placeholder="Introducir cualquier detalle del paciente">     
+            <input type="submit" value="Buscar" class="button">
+        </form>    
+        <!-- START BLOCK : add_pac_button -->
+        <div id="add_pac_button" class="button inline_block add_button3">
+            <span>Añadir</span>
+        </div>
+        <!-- END BLOCK : add_pac_button -->
+    </div>
+
+    <!-- START BLOCK : notificacion_ok --> 
+    <div class="mensaje_confirm" title="Acción realizada">
+        <span>{msg}</span>
+    </div>
+    <!-- END BLOCK : notificacion_ok -->
+
+    <!-- START BLOCK : buscar -->
+    <div>
+        <h3>Resultado de la búsqueda</h3>
+        <table id="tabla_pacientes" class="stdtable">
+            <thead>
+                <tr>
+                    <th>Nº Historia</th>
+                    <th>Nombre</th>
+                    <th>Especie</th>
+                    <th>Raza</th>
+                    <th>DNI</th> 
+                    <th>Acciones</th>
+                </tr>
+            </thead> 
+
+            <!-- START BLOCK : resultado -->
+            <tr>
+                <td>{historia}</td>
+                <td>{nombre}</td>
+                <td>{especie}</td>
+                <td>{raza}</td>
+                <td>{dni_propietario}</td>
+                <td>
+                    <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=pacientes&gestion=pacientes_del&id_pac={id_pac}'>Eliminar</a>
+                    <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=pacientes&action=edit&id={id_pac}'>Editar</a>
+                    <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=pacientes&action=ficha&id={id_pac}'>Detalles</a>
+                </td>
+            </tr>  
+            <!-- END BLOCK : resultado -->
+        </table>
+    </div>
+    <!-- END BLOCK : buscar -->
+</div>     
+
+<!-- START BLOCK : add -->
+<form id=pacientes class="std_form add_form3 {disp_class}" action='/gicorec/index.php?gestion=pacientes_insert' method=POST>
+    <fieldset>
+        <legend id=legend>Registrar nuevo paciente</legend>
+
+        <div id=historia class="campo_form">
+            <label for=historia>Nº de historia:</label>
+            <input type=text name=historia id=historia size="35" />
+        </div>
+        <div id=nombre class="campo_form">
+            <label for=nombre>Nombre:</label>
+            <input type=text name=nombre id=nombre size="35" />
+        </div>
+        <div id=especie class="campo_form">
+            <label for=especie>Especie:</label>
+            <input type=text name=especie id=especie required size="35" />
+        </div>
+        <div id=edad class="campo_form">
+            <label for=edad>Edad:</label>
+            <input type=text name=edad id=edad size="35" />
+        </div>
+        <div id=sexo class="campo_form">
+            <label for=sexo>Sexo:</label>
+            <input type=text name=sexo id=sexo size="35" />
+        </div>
+        <div id=raza class="campo_form">
+            <label for=raza>Raza:</label>
+            <input type=text name=raza id=raza size="35" />
+        </div>
+        <div id=dni_propietario class="campo_form">
+            <label for=dni_propietario>DNI del dueño:</label>
+            <input type=text name=dni_propietario id=dni_propietario size="35" value="{dni}"/>
+        </div>
+
+        <br>
+
+        <div id=remit class="campo_form">
+            <label for=remit_vet>Veterinario remitente:</label>
+            <input type=text name=remit_vet id=remit_vet size="35"  />
+        </div>
+        <div id=remit2 class="campo_form">
+            <label for=remit_clinica>Clínica remitente:</label>
+            <input type=text name=remit_clinica id=remit_clinica size="35"  />
+        </div>
+        <div id=remit3 class="campo_form">
+            <label for=remit_mail>Email remitente:</label>
+            <input type=text name=remit_mail id=remit_mail size="35"  />
+        </div>
+        <div id=remit4 class="campo_form">
+            <label for=remit_tel>Telefono remitente:</label>
+            <input type=text name=remit_tel id=remit_tel size="35"  />
+        </div>
+
+        <!--        <div id=file class="campo_form">
+                    <label for=files>Archivos:</label>
+                    <input type=file size=60 name="file1">
+                </div>-->
+
+        <br class="clearall"/>
+
+    </fieldset>
+    <input type=submit value=Guardar class="button" />         
+    <br class="clearall"/>
+</form>
+<!-- END BLOCK : add -->
+
+<!-- START BLOCK : lista -->
+<div>
+    <table id="tabla_pacientes" class="stdtable">
+        <thead>
+            <tr>
+                <th>Nº Historia</th>
+                <th>Nombre</th>
+                <th>Especie</th>
+                <th>Raza</th>
+                <th>DNI</th> 
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <!-- START BLOCK : fila -->
+        <tr>
+            <td>{historia}</td>
+            <td>{nombre}</td>
+            <td>{especie}</td>
+            <td>{raza}</td> 
+            <td>{dni_propietario}</td>
+            <td>
+                <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=pacientes&gestion=pacientes_del&id={id_pac}'>Eliminar</a>
+                <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=pacientes&action=edit&id={id_pac}'>Editar</a>
+                <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=pacientes&action=ficha&id={id_pac}'>Detalles</a>
+            </td> 
+        </tr>
+        <!-- END BLOCK : fila -->
+    </table>    
+</div>   
+<!-- END BLOCK : lista -->
+
+<!-- START BLOCK : edit -->
+<div class="">
+    <form id=pacientes_edit class="std_form add_form block_center" action='/gicorec/index.php?gestion=pacientes_edit&id={id_pac}' method=POST>
+
+        <fieldset id="detalles_pac">
+            <legend id=legend>Registrar nuevo paciente</legend>
+            <div id=historia class="campo_form">
+                <label for=historia>Nº de historia:</label>
+                <input type=text name=historia id=historia size="35" value="{historia}" />
+            </div>
+            <div id=nombre_pac class="campo_form">
+                <label for=nombre_pac>Nombre:</label>
+                <input type=text name=nombre_pac id=nombre_pac size="35" value="{nombre_pac}" />
+            </div>
+            <div id=especie class="campo_form">
+                <label for=especie>Especie:</label>
+                <input type=text name=especie id=especie size="35" value="{especie}" required />
+            </div>
+            <div id=edad class="campo_form">
+                <label for=edad>Edad:</label>
+                <input type=text name=edad id=edad size="35" value="{edad}" />
+            </div>
+            <div id=sexo class="campo_form">
+                <label for=sexo>Sexo:</label>
+                <input type=text name=sexo id=sexo size="35" value="{sexo}" />
+            </div>
+            <div id=raza class="campo_form">
+                <label for=raza>Raza:</label>
+                <input type=text name=raza id=raza size="35" value="{raza}" />
+            </div>
+
+            <div id=dni_propietario class="campo_form">
+                <label for=dni_propietario>DNI del dueño:</label>
+                <input type=text name=dni_propietario id=dni_propietario  size="35" value="{dni_propietario}" />
+            </div>
+
+
+            <br>
+
+            <div id=remit class="campo_form">
+                <label for=remitente>Veterinario remitente:</label>
+                <input type=text name=remitente id=remitente size="35" value="{remitente}" />
+            </div>
+            <div id=remit class="campo_form">
+                <label for=clinica_remitente>Clínica remitente:</label>
+                <input type=text name=clinica_remitente id=clinica_remitente size="35"  value="{clinica_remitente}" />
+            </div>
+            <div id=remit class="campo_form">
+                <label for=mail_remitente>Email remitente:</label>
+                <input type=text name=mail_remitente id=mail_remitente size="35"  value="{mail_remitente}" />
+            </div>
+            <div id=remit class="campo_form">
+                <label for=tel_remitente>Telefono remitente:</label>
+                <input type=text name=tel_remitente id=tel_remitente size="35" value="{tel_remitente}" />
+            </div>
+
+
+            <!--        <div id=files class="campo_form">
+                        <label for=files>Archivos:</label>
+                        <input type=file size=60 name="file1">
+                    </div>-->
+
+
+            <input type=submit value=Guardar class="button" />         
+        </fieldset>
+    </form>
+</div>
+
+<div id=back class="button inline_block"><a href='/gicorec/index.php?pagina=pacientes'>Atrás</a></div>
+
+<!-- END BLOCK : edit -->
+
+<!-- START BLOCK : ficha -->
+<div id="content_ficha" class="std_form">
+    <ul id="ficha_izq" class="inline_block">
+        <li><span class="label">Nº Histotia: </span><span>{historia}</span></li>
+        <li><span class="label">Nombre: </span>{nombre}</li>
+        <li><span class="label">Especie: </span>{especie}</li>
+        <li><span class="label">Edad: </span>{edad}</li>
+        <li><span class="label">Sexo: </span>{sexo}</li>
+        <li><span class="label">Raza: </span>{raza}</li>
+        <li><span class="label">Nombre Propietario: </span>{nombre_propietario}</li>
+    </ul>   
+    <ul id="ficha_der" class="inline_block">
+
+        <li><span class="label">DNI: </span>{dni_propietario}</li>
+        <li><span class="label">Teléfono: </span>{telefono}</li>
+        <li><span class="label">E-mail: </span>{mail}</li>
+        <li><span class="label">Veterinario remitente: </span>{remitente}</li>
+        <li><span class="label">Clínica remitente: </span>{clinica_remitente}</li>
+        <li><span class="label">Teléfono remitente: </span>{tel_remitente}</li>
+        <li><span class="label">E-mail remitente: </span>{mail_remitente}</li>
+    </ul>  
+    <!-- START BLOCK : paciente_sin_citas -->
+    <p>No existe historial para este paciente</p>
+    <!-- END BLOCK : paciente_sin_citas -->
+
+
+    <!-- START BLOCK : paciente_citas -->
+    <div id="historial" class="tabs">
+        <ul>
+            <li>
+                <a href="#cita_row">Citas pendientes</a>
+            </li>
+            <li>
+                <a href="#historial">Historial</a>
+            </li>
+        </ul>
+
+        <div id="cita_row">  
+            <table class="stdtable">
+                <thead>
+                    <tr>
+                        <td>Cita</td>
+                        <td>Fecha</td>
+                        <td>Diagnóstico</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- START BLOCK : cita_row -->
+                    <tr>
+                        <td><a href="/gicorec/index.php?pagina=agenda&action=detalles&id={cita_id}">{cita_id}</a></td>
+                        <td>{cita_fecha}</td>
+                        <td>{cita_diagnostico}</td>
+                    </tr>
+                    <!-- END BLOCK : cita_row -->
+                </tbody>
+            </table>
+        </div>
+        <div id="historial">
+            <table class="stdtable">
+                <thead>
+                    <tr>
+                        <td>Cita</td>
+                        <td>Fecha</td>
+                        <td>Diagnóstico</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- START BLOCK : historial -->
+                    <tr>
+                        <td><a href="/gicorec/index.php?pagina=agenda&action=detalles&id={cita_id}">{cita_id}</a></td>
+                        <td>{cita_fecha}</td>
+                        <td>{cita_diagnostico}</td>
+                    </tr>
+                    <!-- END BLOCK : historial -->
+                </tbody>
+            </table>
+        </div>
+    </div>    
+    <!-- END BLOCK : paciente_citas -->
+
+</div>
+<div id=back class="button inline_block"><a href='/gicorec/index.php?pagina=pacientes'>Atrás</a></div>
+<!-- END BLOCK : ficha -->
+

@@ -1,0 +1,257 @@
+<h1 class="main_menu_title">Agenda</h1>
+
+<div id=menu-agenda class=menu>
+
+    <div>
+        <form method="POST" id=buscar>
+            <input type="text" name="buscar" placeholder="Buscar cita">     
+            <input type="submit" value="Buscar" class="button">
+        </form>    
+        <p id="buscar_info">Para buscar por fechas utilice el formato "aaaa-mm-dd"</p>
+        <!-- START BLOCK : add_date_button -->
+        <div id="add_date" class="button inline_block add_button3">
+            <span>Añadir</span>
+        </div>
+        <!-- END BLOCK : add_date_button -->
+    </div>
+
+    <!-- START BLOCK : notificacion_ok --> 
+    <div class="mensaje_confirm" title="Acción realizada">
+        <span>{msg}</span>
+    </div>
+    <!-- END BLOCK : notificacion_ok -->
+
+    <!-- START BLOCK : buscar -->
+    <div>
+        <h3>Resultado de la búsqueda</h3>
+        <table id="tabla_agenda" class="stdtable">
+            <thead>
+                <tr>
+                    <th>Nº historia</th>
+                    <th>Nombre</th>
+                    <th>Dueño</th>
+                    <th>Teléfono</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                </tr>
+            </thead> 
+
+            <!-- START BLOCK : resultado -->
+            <tr>
+                <td>{historia}</td>
+                <td>{nombre}</td>
+                <td>{propietario}</td>
+                <td>{telefono}</td>
+                <td>{estado}</td>
+                <td>{fecha}</td>
+                <td>{hora}</td>
+            </tr>  
+            <!-- END BLOCK : resultado -->
+        </table>
+    </div>
+</div>     
+<!-- END BLOCK : buscar -->
+
+<!-- START BLOCK : add -->
+<form id=form_agenda class="std_form add_form3" style="display: none" action='/gicorec/index.php?gestion=agenda_insert&action=add' method=POST>
+    <fieldset>
+        <legend id=legend>Añadir nueva cita</legend>
+        <div class="campo_form" >
+            <label for="dni">DNI propietario: </label>
+            <input type="text" name="dni" id="dni" />
+        </div>
+        <div class="campo_form" >
+            <label for="propietario">Propietario: </label>
+            <input type=text name=propietario id=propietario size="35" value='{propietario}' readonly/>
+        </div>
+        <div class="campo_form" >
+            <label for="select_mascota">Nombre mascota: </label>
+            <input type="text" name="select_mascota" id="select_mascota" value="{mascota_nombre}">
+            <input type="hidden" name="id_mascota" id="id_mascota" value="{id_mascota}">
+        </div>
+        <div class="campo_form" >
+            <label for="raza">Raza: </label>
+            <input type=text name=raza id=raza size="35" value='{raza}' readonly/>
+        </div>
+        <div class="campo_form" >
+            <label for="historia">Nº historial: </label>
+            <input type=text name=historia id=historia size="35" value='{historia}' readonly/>
+        </div>
+        <div class="campo_form" >
+            <label for="telefono">Teléfono: </label>
+            <input type=text name=telefono id=telefono size="35" value='{telefono}' readonly/>
+        </div>
+        <div class="campo_form" >
+            <label for="tipo">Tipo de cita: </label>
+            <select NAME="tipo">
+                <option value="cirugia">Cirugía</option>
+                <option value="consulta">Consulta</option>
+                <option value="otros">Otros</option>
+            </select>
+        </div>
+        <div class="campo_form" >
+            <label for="motivo">Motivo: </label>
+            <input type=text name=motivo id=motivo size="35" value='{motivo}' />
+        </div>
+
+        <div id="fecha_cita_wrapper" class="campo_form" >
+            <label for="motivo">Fecha y Veterinario: </label>
+            <input type=text name=fecha class="date selecthora" size="15" value='{fecha}' id="fecha_cita"/>
+            <select id="veterinario" name="responsable" class="selecthora">
+                <option value="0">Seleccionar un veterinario</option>
+                <!-- START BLOCK : add_veterinario_option -->
+                <option value="{vet_id}">{vet_nombre}</option>
+                <!-- END BLOCK : add_veterinario_option -->
+            </select>
+        </div>
+        <div id="horas" class="campo_form" >
+
+        </div>
+        <div class="campo_form" >
+            <input class="button_edit button" type="reset" value="Borrar datos">
+            <input class="button_edi button" type="submit" value="Enviar">
+        </div>
+    </fieldset>
+</form>
+<!-- END BLOCK : add -->
+
+<!-- START BLOCK : lista -->
+<div id="lista_citas" class="tabs">
+    <ul>
+        <li>
+            <a href="#citas_pendientes">Citas Pendientes</a>
+        </li>
+        <li>
+            <a href="#citas_realizadas">Citas Realizadas</a>
+        </li>
+
+    </ul>
+
+    <div id="citas_pendientes" >
+        <table id="tabla_citas_pendientes" class="stdtable">
+            <thead>
+                <tr>
+                    <th>Nº historia</th>
+                    <th>Paciente</th>
+                    <!--<th>Especie</th>--> 
+                    <th>Dueño</th>
+                    <!--<th>Teléfono</th>-->
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- START BLOCK : citas_pendientes_row -->
+                <tr>
+                    <td>{historia}</td>
+                    <td>{nombre}</td>
+                    <!--<td>{especie}</td>-->
+                    <td>{propietario}</td>
+                    <!--<td>{telefono}</td>-->
+                    <td>{fecha}</td>
+                    <td>{hora}</td>
+                    <td>
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=agenda&gestion=agenda_del&id={id_cita}'>Eliminar</a>
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=agenda&action=edit&id={id_cita}'>Editar</a>
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=agenda&action=detalles&id={id_cita}'>Detalles</a>
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=cita_realizar&id={id_cita}'>Realizar</a>
+                    </td> 
+                </tr>
+                <!-- END BLOCK : citas_pendientes_row -->
+            </tbody>
+        </table>  
+    </div>  
+
+    <div id="citas_realizadas">
+        <table id="tabla_citas_realizadas" class="stdtable">
+            <thead>
+                <tr>
+                    <th>Nº historia</th>
+                    <th>Paciente</th>
+                    <!--<th>Especie</th>--> 
+                    <th>Dueño</th>
+                    <!--                    <th>Teléfono</th>-->
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- START BLOCK : citas_realizadas_row -->
+                <tr>
+                    <td>{historia}</td>
+                    <td>{nombre}</td>
+                    <!--<td>{especie}</td>-->
+                    <td>{propietario}</td>
+                    <!--<td>{telefono}</td>-->
+                    <td>{fecha}</td>
+                    <td>{hora}</td>
+
+                    <td>                     
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=agenda&action=detalles&id={id_cita}'>Detalles</a>
+                    </td> 
+                </tr>
+                <!-- END BLOCK : citas_realizadas_row -->
+            </tbody>
+        </table>  
+    </div> 
+</div>
+<!-- END BLOCK : lista -->
+
+<!-- START BLOCK : edit -->
+<form id="citas_edit" class="std_form" action='/gicorec/index.php?gestion=agenda_edit&id={id_cita}' method=POST>
+    <fieldset>
+        <div id="fecha_cita_wrapper" class="campo_form" >
+            <label for="motivo">Fecha y Veterinario: </label>
+            <input type=text name=fecha class="date selecthora" size="15" value='{fecha}' id="fecha_cita"/>
+            <select id="veterinario" name="responsable" class="selecthora">
+                <option value="0">Seleccionar un veterinario</option>
+                <!-- START BLOCK : veterinario_option -->
+                <option value="{vet_id}">{vet_nombre}</option>
+                <!-- END BLOCK : veterinario_option -->
+            </select>
+        </div>
+        <div id="horas" class="campo_form" >
+
+        </div>
+        <div class="campo_form" >
+            <input class="button_edit button" type="reset" value="Borrar datos">
+            <input class="button_edit button" type="submit" value="Enviar">
+        </div>
+    </fieldset>
+</form>
+<!-- END BLOCK : edit -->
+
+
+<!-- START BLOCK : detalles -->
+<div id="content_ficha" class="std_form ">
+    <div id="info">
+        <ul>
+            <li><span class="label">Historia:</span><span>{historia}</span></li>
+            <li><span class="label">Raza:</span><span>{raza}</span></li>
+            <li><span class="label">Edad:</span><span>{edad}</span></li>
+            <li><span class="label">DNI propietario:</span><span>{dni}</span></li>
+            <li><span class="label">Teléfono:</span><span>{tel}</span></li>
+            <li><span class="label">Dirección:</span><span>{dir}</span></li>
+            <li><span class="label">Motivo:</span><span>{motivo}</span></li>
+            <li><span class="label">Tipo:</span><span>{tipo}</span></li>
+            <li><span class="label">Responsable:</span><span>{responsable}</span></li>
+        </ul>
+    </div>
+
+    <!-- START BLOCK : realizada -->
+    <div id="realizada">
+        <ul>    
+            <li><span class="label">Diagnóstico:</span><span>{diag}</span></li>
+            <li><span class="label">Observaciones:</span><span>{obs}</span></li>  
+        </ul>
+    </div>
+    <!-- END BLOCK : realizada -->
+</div>     
+<div id=back class="button inline_block"><a href='/gicorec/index.php?pagina=agenda'>Atrás</a></div>
+
+<!-- END BLOCK : detalles -->   
+
+

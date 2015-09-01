@@ -1,0 +1,76 @@
+<h1 class="main_menu_title">Realización de la cita</h1>
+
+<div>
+    <div class="campo_form">
+        <p><span class="label">Numero de historia:</span> {historia}</p>
+    </div>
+    <div class="campo_form">
+        <p><span class="label">Nombre de la mascota:</span> {nombre_mascota}</p>
+    </div>
+    <div class="campo_form">
+        <p><span class="label">Fecha de la cita:</span> {fecha} {hora}</p>
+    </div>
+    <div class="campo_form">
+        <p><span class="label">Veterinario responsable:</span> {vet_responsable}</p>
+    </div>
+</div>
+<form id="cita_realizar" method="POST" ENCTYPE="multipart/form-data" action="index.php?gestion=cita_realizar_realizacion&cita={id_cita}" class="std_form">
+    <fieldset>    
+        <div class="campo_form">
+            <label>Historia clínica</label>
+            <textarea name="hclinica" placeholder="Historia clínica"></textarea>
+        </div>
+        <div class="campo_form">
+            <label>Examen físico</label>
+            <textarea name="examen" placeholder="Detalles del examen físico"></textarea>
+        </div>
+        <div class="campo_form">
+            <label>Tratamiento</label>
+            <textarea name="tratamiento" placeholder="Indicar el tratamiento a realizar"></textarea>
+        </div>
+        <div class="campo_form">
+            <label>Diagnóstico</label>
+            <textarea name="diagnostico" placeholder="Detalles del diagnóstico"></textarea>
+        </div>
+    </fieldset>
+
+    <div class="campo_form">
+        <label>Observaciones</label>
+        <textarea name="observaciones" placeholder="Observaciones realizadas"></textarea>
+    </div>
+    <div class="campo_form">
+        <label>Subir archivos: </label>
+        <input class="inline_block" type=file name=fichero>
+        <p style="margin-left: 200px; font-style:italic; font-size: 90%;">Seleccionar un archivo o un conjunto de archivos en formato .zip (solo se admite ficheros zip)</p>
+        <p style="margin-left: 200px; font-style:italic; font-size: 90%;">El nombre del archivo no debe contener la letra 'ñ' tildes ni caracteres especiales</p>
+    </div>
+    <br>
+    <div class="campo_form">
+        <label>Servicios extra</label>
+        <input type="checkbox" value="1" name="producto_extra[]" checked id="no_click">Cita {coste_cita}
+        <input type="checkbox" value="2" name="producto_extra[]">Peluqueria {coste_peluqueria}
+        <input type="checkbox" value="3" name="producto_extra[]">Analitica {coste_analitica}
+        <input type="checkbox" value="4" name="producto_extra[]">Cortado de uñas {coste_uñas}
+        <input type="checkbox" value="5" name="producto_extra[]">Exterilizacion {coste_exterilizacion}
+
+    </div>
+    <div class="campo_form">
+        <label>Productos</label>
+        <input type="text" id="productosAdd" class="">
+    </div>
+
+    <div class="hidden">
+        <label>Coste de la cita:</label>
+        <input type="text" name="costeCita" class="" value="40">
+    </div>
+
+    <small>actualmente esta pendiente saber como se define el precio al publico de los productos. 
+        Habria que modificar el ajax para obtener dicho precio</small>
+
+    <fieldset id="recetasWrapper">
+        <legend>Receta</legend>
+    </fieldset>
+    <div>
+        <input class="button" type="submit" value="Realizar">
+    </div>
+</form>

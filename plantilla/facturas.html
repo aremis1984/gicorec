@@ -1,0 +1,142 @@
+<h1 class="main_menu_title">Facturas</h1>
+
+<div id=menu-facturas class=menu>
+
+    <div>
+        <form method="POST" id=buscar>
+            <input type="text" name="buscar" placeholder="Buscar factura">     
+            <input type="submit" value="Buscar" class="button">
+        </form>  
+        <p id="buscar_info">Para buscar por fechas utilice el formato "aaaa-mm-dd"</p>
+    </div>
+</div>
+
+<!-- START BLOCK : reset_button -->
+<a class="button inline_block" href='/gicorec/index.php?pagina=facturas'>Atrás</a>
+<!-- END BLOCK : reset_button -->
+
+<!-- START BLOCK : notificacion_ok --> 
+<div class="mensaje_confirm" title="Acción realizada">
+    <span>{msg}</span>
+</div>
+<!-- END BLOCK : notificacion_ok -->
+
+<!-- START BLOCK : buscar -->
+<h3 class="aviso">Resultado de la búsqueda</h3>
+<!-- END BLOCK : buscar -->
+
+<!-- START BLOCK : facturas -->
+<div id="lista_facturas" class="tabs">
+    <ul>
+        <li>
+            <a href="#facturas_pendientes">Facturas Pendientes</a>
+        </li>
+        <li>
+            <a href="#facturas_cobradas">Facturas Cobradas</a>
+        </li>
+
+    </ul>
+
+    <div id="facturas_pendientes">
+        <table id="tabla_facturas_pendientes" class="stdtable">
+            <thead>
+                <tr>
+                    <th>Nº de historia</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- START BLOCK : facturas_pendientes_row -->
+                <tr>
+                    <td>{historia}</td>
+                    <td>{fecha}</td>
+                    <td>{hora}</td>
+                    <td>{total}</td>
+                    <td>
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=facturas&action=detalles&id={id_factura}'>Detalles</a>                        
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=imprimir&imprimir=factura&id={id_factura}'>Imprimir</a>
+                    </td> 
+                </tr>
+                <!-- END BLOCK : facturas_pendientes_row -->
+            </tbody>
+        </table>  
+    </div>  
+
+    <div id="facturas_cobradas">
+        <table id="tabla_facturas_cobradas" class="stdtable">
+            <thead>
+                <tr>
+                    <th>Nº de historia</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- START BLOCK : facturas_cobradas_row -->
+                <tr>
+                    <td>{historia}</td>
+                    <td>{fecha}</td>
+                    <td>{hora}</td>
+                    <td>{total}</td> 
+                    <td>
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=facturas&action=detalles&id={id_factura}'>Detalles</a>
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=imprimir&imprimir=factura&id={id_factura}'>Imprimir</a>
+                    </td> 
+                </tr>
+                <!-- END BLOCK : facturas_cobradas_row -->
+            </tbody>
+        </table>  
+    </div>  
+</div>
+<!-- END BLOCK : facturas -->
+
+<!-- START BLOCK : detalles -->
+<div id="detalles">
+    <div id="detalles_fact">
+        <p class="inline_block"><span class="label">Nombre del propietario: </span>{nombre}</p> 
+        <p class="inline_block"><span class="label">DNI del propietario: </span>{dni}</p> 
+        <p class="inline_block"><span class="label">Nombre del paciente </span>{nombre_pac}</p> 
+    </div>
+    <table id="tabla_detalles" class="tabs stdtable">
+        <thead>
+            <tr>
+                <th>Referencia</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Importe</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- START BLOCK : detalle_factura -->
+            <tr>
+                <td>{referencia}</td>
+                <td>{producto}</td>
+                <td>{cantidad}</td>
+                <td>{importe}</td>                   
+            </tr>
+            <!-- END BLOCK : detalle_factura -->
+        </tbody>
+    </table>  
+</div>
+
+<div class="clearall"></div>
+<div id=back class="button inline_block"><a href='/gicorec/index.php?pagina=facturas'>Atrás</a></div>
+<!-- START BLOCK : pagar -->
+<div id="pagar" class="button inline_block">
+    <a href="/gicorec/index.php?pagina=facturas&action=pagar&id={id_factura}">Pagar</a>
+</div>
+<!-- END BLOCK : pagar -->
+
+<!-- END BLOCK : detalles -->
+
+
+
+
+
+

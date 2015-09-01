@@ -1,0 +1,236 @@
+<h1 class="main_menu_title">Almacen</h1>
+
+<div id=menu-almacen class=menu>
+
+    <div>
+        <form method="POST" id=buscar>
+            <input type="text" name="buscar" placeholder="Buscar en productos o proveedores">     
+            <input type="submit" value="Buscar" class="button">
+        </form>    
+        <!-- START BLOCK : reset_button -->
+        <a class="button inline_block" href='/gicorec/index.php?pagina=almacen'>Atrás</a>
+        <!-- END BLOCK : reset_button -->
+
+        <!-- START BLOCK : add_prod_button -->
+        <div id="add_prod" class="button inline_block add_button">
+            <span>Añadir Productos</span>
+        </div>
+        <!-- END BLOCK : add_prod_button -->
+
+        <!-- START BLOCK : add_prov_button -->
+        <div id="add_prov" class="button inline_block add_button2">
+            <span>Añadir Proveedores</span>
+        </div>
+        <!-- END BLOCK : add_prov_button -->
+    </div>
+
+    <!-- START BLOCK : notificacion_ok --> 
+    <div class="mensaje_confirm" title="Acción realizada">
+        <span>{msg}</span>
+    </div>
+    <!-- END BLOCK : notificacion_ok -->
+
+    <!-- START BLOCK : buscar -->
+    <h3 class="aviso">Resultados de la búsqueda</h3>
+    <!-- END BLOCK : buscar -->
+
+
+    <!-- START BLOCK : add_prod -->
+    <form id=almacen class="std_form add_form" style="display: none" action='/gicorec/index.php?gestion=almacen_insert' method=POST>
+        <fieldset>
+            <legend id=legend>Insertar productos en el almacen</legend>
+            <div id=name class="campo_form">
+                <label for="nombre">Nombre:</label>
+                <input type=text name=nombre id=nombre size="30" />
+            </div>
+            <div id=ref class="campo_form">
+                <label for="referencia">Referencia:</label>
+                <input type=text name=referencia id=ref size="30" required />
+            </div>
+            <div id=prov class="campo_form">
+                <label for="proveedor">Proveedor:</label>
+                <input type=text name=proveedor id=prov size="30" />
+            </div>
+
+            <div id=cant_min class="campo_form">
+                <label for="cant_min">Cantidad Mínima:</label>
+                <input type=text name=cant_min id=cant_min size="30" />
+            </div>
+            <div id=cant_pedir class="campo_form">
+                <label for="cant_pedir">Cantidad a pedir:</label>
+                <input type=text name=cant_pedir id=cant_pedir size="30" />
+            </div>
+            <div id=precio class="campo_form">
+                <label for=precio>Precio unidad:</label>
+                <input type=text name=precio id=precio size="30" placeholder="##.##"/><span>€</span>
+            </div>
+            <input type=submit value=Guardar class="button" />         
+        </fieldset>
+    </form>
+    <!-- END BLOCK : add_prod -->
+
+    <!-- START BLOCK : add_proveedor -->
+    <form id=almacen class="std_form add_form2" style="display: none" action='/gicorec/index.php?gestion=prov_insert' method=POST>
+        <fieldset>
+            <div id=name class="campo_form">
+                <label for="nombre">Nombre:</label>
+                <input type=text name=nombre id=nombre size="30" />
+            </div>
+            <div id=tel class="campo_form">
+                <label for="tel">Teléfono:</label>
+                <input type=text name=tel id=tel size="30" />
+            </div>
+            <div id=mail class="campo_form">
+                <label for="mail">E-mail:</label>
+                <input type=text name=mail id=mail size="30" />
+            </div>
+            <div id=dir class="campo_form">
+                <label for="dir">Dirección:</label>
+                <input type=text name=dir id=dir size="30" />
+            </div>
+            <input type=submit value=Guardar class="button" />         
+        </fieldset>
+    </form>
+    <!-- END BLOCK : add_proveedor -->
+
+    <!-- START BLOCK : lista -->
+    <div id="lista_prod" class="tabs">    
+        <ul>
+            <li>
+                <a href="#productos">Productos</a>
+            </li>
+            <li>
+                <a href="#proveedores">Proveedores</a>
+            </li>
+        </ul>    
+
+        <div id="productos" class="tabs">
+            <table id="tabla_productos" class="stdtable">
+                <thead>
+                    <tr>
+                        <th>Referencia</th>
+                        <th>Nombre</th>
+                        <th>Cantidad Mínima</th>
+                        <th>Cantidad A pedir</th>
+                        <th>Proveedor</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <!-- START BLOCK : productos -->
+                    <tr>
+                        <td>{prod_ref}</td>
+                        <td>{prod_nombre}</td>
+                        <td>{prod_cant_min}</td>
+                        <td>{prod_cant_pedir}</td> 
+                        <td>{prod_prov}</td>
+                        <td>{prod_precio}</td>
+                        <td>
+                            <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=almacen&gestion=almacen_del&id={prod_id}'>Eliminar</a>
+                            <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=almacen&action=edit_prod&id={prod_id}'>Editar</a>
+                        </td> 
+                    </tr>
+                    <!-- END BLOCK : productos -->
+                </tbody>
+            </table>    
+        </div>  
+
+        <div id="proveedores">
+            <table id="tabla_proveedores" class="stdtable">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>E-mail</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <!-- START BLOCK : proveedores -->
+                    <tr>
+                        <td>{nombre}</td>
+                        <td>{tel}</td>
+                        <td>{dir}</td>
+                        <td>{mail}</td> 
+                        <td>
+                            <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=almacen&gestion=prov_del&id={id_prov}'>Eliminar</a>
+                            <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=almacen&action=edit_prov&id={id_prov}'>Editar</a>
+                        </td> 
+                    </tr>
+                    <!-- END BLOCK : proveedores -->
+                </tbody>
+            </table>    
+        </div>   
+
+    </div>
+    <!-- END BLOCK : lista -->
+
+
+
+
+    <!-- START BLOCK : edit_prod -->
+    <form id=almacen_edit class="std_form" action='/gicorec/index.php?gestion=almacen_edit&id={prod_id}' method=POST>
+        <fieldset>
+            <legend id=legend>Editar el producto {prod_name}</legend>
+            <div id=name class="campo_form">
+                <label for="nombre">Nombre:</label>
+                <input type=text name=nombre id=nombre size="35" value='{prod_nombre}' />
+            </div>
+            <div id=ref class="campo_form">
+                <label for="referencia">Referencia:</label>
+                <input type=text name=referencia id=ref size="35" required value='{prod_ref}' />
+            </div>
+            <div id=prov class="campo_form">
+                <label for="proveedor">Proveedor:</label>
+                <input type=text name=proveedor id=prov size="35" value='{prod_prov}' readonly />
+            </div>
+
+            <div id=cant_min class="campo_form">
+                <label for="cant_min">Cantidad Mínima:</label>
+                <input type=text name=cant_min value='{prod_cant_min}' id=cant_min />
+            </div>
+            <div id=cant_pedir class="campo_form">
+                <label for="cant_pedir">Cantidad a pedir:</label>
+                <input type=text name=cant_pedir id=cant_pedir value='{prod_cant_pedir}' />
+            </div>
+            <div id=precio class="campo_form">
+                <label for="precio">Precio unidad:</label>
+                <input type=text name=precio id=precio value='{prod_precio}'/><span>€</span>
+            </div>
+            <input type=submit value=Guardar class="button"/>         
+        </fieldset>
+    </form>
+
+    <div id=back class="button inline_block"><a href='/gicorec/index.php?pagina=almacen'>Atrás</a></div>
+
+    <!-- END BLOCK : edit_prod -->
+
+    <!-- START BLOCK : edit_prov -->
+    <form id=almacen_edit class="std_form" action='/gicorec/index.php?gestion=prov_edit&id={id_prov}' method=POST>
+        <fieldset>
+            <legend id=legend>Editar el producto {prod_name}</legend>
+            <div id=name class="campo_form">
+                <label for="nombre">Nombre:</label>
+                <input type=text name=nombre id=nombre size="35" value='{nombre}' />
+            </div>
+            <div id=tel class="campo_form">
+                <label for="tel">Teléfono:</label>
+                <input type=text name=telefono id=tel size="35" required value='{telefono}' />
+            </div>
+            <div id=mail class="campo_form">
+                <label for="mail">E-mail:</label>
+                <input type=text name=mail id=mail size="35" value='{mail}' />
+            </div>
+            <div id=dir class="campo_form">
+                <label for="dir">Dirección:</label>
+                <input type=text name=direccion id=dir size="35" value='{direccion}' />
+            </div>
+            <input type=submit value=Guardar class="button"/>         
+        </fieldset>
+    </form>
+
+    <div id=back class="button inline_block"><a href='/gicorec/index.php?pagina=almacen'>Atrás</a></div>
+
+    <!-- END BLOCK : edit_prov -->

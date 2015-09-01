@@ -1,0 +1,76 @@
+
+.main_menu ul li {
+    display: inline-block;
+    line-height: 90px;
+    list-style: none outside none;
+    text-align: center;
+    width: 155px;
+    margin-left: 5px;    
+}
+
+#main_menu > div{
+    margin-bottom: 7px;
+}
+
+#main_menu {
+    display: block;  
+    position: relative;
+    text-align: center;
+}
+
+#p_alm{
+    background-image: url("/gicorec/media/almacen.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 101% 104%;
+}
+#p_pac{
+    background-image: url("/gicorec/media/mascotas1.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 101% 104%;
+}
+#p_due{
+    background-image: url("/gicorec/media/propietarios.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 101% 104%;
+}
+#p_even{
+    background-image: url("/gicorec/media/agenda.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 101% 104%;
+}
+#p_age{
+    background-image: url("/gicorec/media/cirugia.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 101% 104%;
+}
+#p_cont{
+    background-image: url("/gicorec/media/contabilidad.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 101% 104%;
+}
+#p_user{
+    background-image: url("/gicorec/media/usuario.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 70% 104%;
+}
+#p_user a.boton_ppal {
+    font-size: 22px;
+}
+.boton_ppal {
+    color: lightsteelblue;
+    display: block;
+    font-size: 25px;
+    text-shadow: 3px 1px 0 black;
+
+}
+.alm_elto{
+    font-weight: bold;
+}
+

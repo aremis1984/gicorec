@@ -1,0 +1,34 @@
+<div>
+    <!-- START BLOCK : erroradd -->
+    <h2>Error crear el nuevo usuario, por favor revise los datos</h2>
+    <!-- END BLOCK : erroradd -->
+
+    <form id=addUser class="userlogin std_form" method=POST action="/gicorec/index.php?gestion=nuevo_usuario_add">
+        <fieldset>
+            <p>
+                <label for="login">Login de usuario</label>
+                <input id="login" class="campo_form" name="login" type="text" required>
+            </p>
+
+            <p>
+                <label for="name">Nombre</label>
+                <input id="name" class="campo_form" name="name" type="text">
+            </p>
+            <p>
+                <label for="lastname">Apellidos</label>
+                <input id="lastname" class="campo_form" name="lastname" type="text">
+            </p>
+            <p>
+                <label for="nif">DNI</label>
+                <input id="nif" class="campo_form" name="nif" type="text" required>
+            </p>
+
+            <p>
+                <input type="submit" value="Crear usuario" class="button">
+            </p>
+        </fieldset>
+    </form>
+    <p>Una vez creado el usuario este deberá utilizar el enlace para "identificacion de nuevo usuario" en la página principal
+        y seguir los pasos que se describe en esa página para poder utilizar el nuevo usuario</p>
+</div>
+

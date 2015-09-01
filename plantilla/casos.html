@@ -1,0 +1,143 @@
+<h1 class="main_menu_title">Casos médicos</h1>
+
+<div id=menu-casos class=menu>
+
+    <div>
+        <form method="POST" id=buscar>
+            <input type="text" name="buscar" placeholder="Introducir cualquier detalle">     
+            <input type="submit" value="Buscar" class="button">
+        </form>   
+        <p id="buscar_info">Para buscar por fechas utilice el formato "aaaa-mm-dd"</p>
+        <!-- START BLOCK : reset_button -->
+        <a class="button inline_block" href='/gicorec/index.php?pagina=casos'>Atrás</a>
+        <!-- END BLOCK : reset_button -->
+
+    </div>
+    <!-- START BLOCK : buscar -->
+    <h3>Resultados de la búsqueda</h3>
+    <!-- END BLOCK : buscar -->
+
+    <!-- START BLOCK : lista -->
+    <div id="lista_casos" class="tabs">
+        <ul>
+            <li>
+                <a href="#cirugia">Cirugías</a>
+            </li>
+            <li>
+                <a href="#consulta">Consultas</a>
+            </li>
+            <li>
+                <a href="#otros">Otros</a>
+            </li>
+
+        </ul> 
+        <div id="cirugia">  
+            <table class="stdtable">
+                <thead>
+                    <tr>
+                        <td>Nº de Historia</td>
+                        <td>Especie</td>
+                        <td>Diagnóstico</td>
+                        <td>Fecha</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead> 
+
+                <!-- START BLOCK : cirugia -->
+                <tr>
+                    <td>{historia}</td>
+                    <td>{especie}</td>
+                    <td>{diagnostico}</td>
+                    <td>{fecha}</td>
+                    <td>
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=casos&action=detalles&id={id_caso}'>Detalles</a>
+                    </td>
+                </tr>  
+                <!-- END BLOCK : cirugia -->
+            </table>
+        </div>
+
+        <div id="consulta">
+            <table class="stdtable">
+                <thead>
+                    <tr>
+                        <td>Nº de Historia</td>
+                        <td>Especie</td>
+                        <td>Diagnóstico</td>
+                        <td>Fecha</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead> 
+                <!-- START BLOCK : consulta -->
+                <tr>
+                    <td>{historia}</td>
+                    <td>{especie}</td>
+                    <td>{diagnostico}</td>
+                    <td>{fecha}</td>
+                    <td>
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=casos&action=detalles&id={id_caso}'>Detalles</a>
+                    </td>
+                </tr>  
+                <!-- END BLOCK : consulta -->
+            </table>
+        </div>  
+        <div id="otros">
+            <table class="stdtable">
+                <thead>
+                    <tr>
+                        <td>Nº de Historia</td>
+                        <td>Especie</td>
+                        <td>Diagnóstico</td>
+                        <td>Fecha</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead> 
+                <!-- START BLOCK : otros -->
+                <tr>
+                    <td>{historia}</td>
+                    <td>{especie}</td>
+                    <td>{diagnostico}</td>
+                    <td>{fecha}</td>
+                    <td>
+                        <a class="button_edit button inline_block" href='/gicorec/index.php?pagina=casos&action=detalles&id={id_caso}'>Detalles</a>
+                    </td>
+                </tr>  
+                <!-- END BLOCK : otros -->
+            </table>
+        </div>
+    </div>     
+    <!-- END BLOCK : lista -->
+
+    <!-- START BLOCK : detalles -->
+    <div id="content_detalles"> 
+        <div id="datos_casos" > 
+            <ul>
+                <li class="inline_block"><span class="label">Raza: </span>{raza}</li>
+                <li class="inline_block"><span class="label">Edad: </span>{edad}</li>
+                <li class="inline_block"><span class="label">Sexo: </span>{sexo}</li>
+            </ul>
+
+        </div>
+        <div class="std_form">
+            <p><span class="label">Motivo: </span>{motivo}</p>
+            <br>
+            <p><span class="label">Examen: </span>{examen}</p>
+            <br>
+            <p><span class="label">Historia Clínica: </span>{hclinica}</p>
+            <br>
+            <p><span class="label">Tratamiento: </span>{tratamiento}</p>
+            <br>
+            <p><span class="label">Observaciones: </span>{observaciones}</p>
+        </div>
+        <ul>
+            <!-- START BLOCK : detalles_file -->
+            <li><a href='/gicorec/media/files/{caso_id}/{fichero_nombre}' target='_blank'>{fichero_nombre}</a></li>
+            <!-- END BLOCK : detalles_file -->
+        </ul>
+
+    </div>   
+    <div id=back class="button inline_block"><a href='/gicorec/index.php?pagina=casos'>Atrás</a></div>
+    <!-- END BLOCK : detalles -->
+
+
+
